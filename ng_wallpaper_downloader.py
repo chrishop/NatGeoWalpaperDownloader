@@ -9,8 +9,8 @@ def main():
 
     # argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("name")
-    parser.add_argument("url")
+    parser.add_argument("name", help="the name of the image excluding file extension")
+    parser.add_argument("url", help="the url of a natgeo photo of the day")
     args = parser.parse_args(argv[1:])
 
     # scrape the page
@@ -34,7 +34,7 @@ def main():
 
     # download
     image_request = requests.get(img_url)
-    open(args.name, 'wb').write(image_request.content)
+    open(args.name + ".jpg", 'wb').write(image_request.content)
 
 
 if __name__ == '__main__':
