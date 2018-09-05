@@ -11,10 +11,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("name")
     parser.add_argument("url")
-    args = parser.parse_args(['test.jpg',
-    'https://www.nationalgeographic.com/photography/photo-of-the-day/2018/09/pit-viper-green-komodo-coloration/'])
+    args = parser.parse_args(argv[1:])
 
-    #scrape the page
+    # scrape the page
     request = requests.get(args.url, allow_redirects=True)
     html_tmp = open("tmp.html", "w+")
     html_tmp.write(request.text)
